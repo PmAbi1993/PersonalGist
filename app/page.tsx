@@ -1,12 +1,18 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
 export default function Home() {
   const [email, setEmail] = useState("");
+  const router = useRouter();
+
+  const handleGetStarted = () => {
+    router.push("/home");
+  };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-background">
@@ -26,7 +32,7 @@ export default function Home() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <Button className="w-full">
+          <Button className="w-full" onClick={handleGetStarted}>
             Get Started
           </Button>
           <p className="text-xs text-center text-muted-foreground">
